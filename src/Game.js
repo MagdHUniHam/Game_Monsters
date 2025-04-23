@@ -69,12 +69,28 @@ Candy.Game.prototype = {
 			candy.angle += candy.rotateMe;
 		});
 		// if the health of the player drops to 0, the player dies = game over
-		if(!Candy._health) {
-			// show the game over message
-			this.add.sprite((Candy.GAME_WIDTH-594)/2, (Candy.GAME_HEIGHT-271)/2, 'game-over');
-			// pause the game
-			this.game.paused = true;
-		}
+if (!Candy._health && !this._gameOverShown) {
+	this._gameOverShown = true;
+
+	// show the game over message
+	this.add.sprite((Candy.GAME_WIDTH - 594) / 2, (Candy.GAME_HEIGHT - 271) / 2, 'game-over');
+
+	// add the button that will restart the game
+	this.add.button(
+		Candy.GAME_WIDTH - 401 - 10,
+		Candy.GAME_HEIGHT - 143 - 10,
+		'button-start',
+		function() {
+			this.state.start('Game'); // restart the game
+		},
+		this,
+		1, 0, 2
+	);
+
+	// pause the game
+	this.game.paused = true;
+}
+
 	}
 };
 
