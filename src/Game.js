@@ -69,23 +69,29 @@ Candy.Game.prototype = {
 			candy.angle += candy.rotateMe;
 		});
 		// if the health of the player drops to 0, the player dies = game over
-if (!Candy._health && !this._gameOverShown) {
-	this._gameOverShown = true;
+		if (!Candy._health && !this._gameOverShown) {
+			this._gameOverShown = true;
+		
+			// show the game over message
+			this.add.sprite((Candy.GAME_WIDTH - 594) / 2, (Candy.GAME_HEIGHT - 271) / 2, 'game-over');
+		
+			// add the button that will restart the game
+			this.add.button(
+				Candy.GAME_WIDTH - 401 - 10,
+				Candy.GAME_HEIGHT - 143 - 10,
+				'button-start',
+				function () {
+					this.game.paused = false; // unpause the game first
+					this.state.start('Game'); // then restart the game
+				},
+				this,
+				1, 0, 2
+			);
+		
+			// pause the game (UI elements like buttons still work in Phaser)
+			this.game.paused = true;
+		}
 
-	// show the game over message
-	this.add.sprite((Candy.GAME_WIDTH - 594) / 2, (Candy.GAME_HEIGHT - 271) / 2, 'game-over');
-
-	// add the button that will restart the game
-	this.add.button(
-		Candy.GAME_WIDTH - 401 - 10,
-		Candy.GAME_HEIGHT - 143 - 10,
-		'button-start',
-		function() {
-			this.state.start('Game'); // restart the game
-		},
-		this,
-		1, 0, 2
-	);
 
 	// pause the game
 	this.game.paused = true;
