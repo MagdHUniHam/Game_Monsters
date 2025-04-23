@@ -17,7 +17,7 @@ Candy.Game.prototype = {
         this.physics.startSystem(Phaser.Physics.ARCADE);
         // set the global gravity
         this.physics.arcade.gravity.y = 200;
-        // display images: background, floor and score
+        // display images: background, floor, and score
         this.add.sprite(0, 0, 'background');
         this.add.sprite(-30, Candy.GAME_HEIGHT - 160, 'floor');
         this.add.sprite(10, 5, 'score-bg');
@@ -60,7 +60,7 @@ Candy.Game.prototype = {
     update: function() {
         // update timer every frame
         this._spawnCandyTimer += this.time.elapsed;
-        // if spawn timer reach one second (1000 miliseconds)
+        // if spawn timer reach one second (1000 milliseconds)
         if (this._spawnCandyTimer > 1000) {
             // reset it
             this._spawnCandyTimer = 0;
@@ -104,6 +104,30 @@ Candy.Game.prototype = {
             // pause the game (UI elements like buttons still work in Phaser)
             this.game.paused = true;
         }
+    }
+};
+
+// Main Menu state for starting the game
+Candy.MainMenu = function(game) {};
+
+Candy.MainMenu.prototype = {
+    create: function() {
+        // display images: background and title
+        this.add.sprite(0, 0, 'background');
+        this.add.sprite(-130, Candy.GAME_HEIGHT - 514, 'monster-cover');
+        this.add.sprite((Candy.GAME_WIDTH - 395) / 2, 60, 'title');
+
+        // add the start button
+        var startButton = this.add.button(Candy.GAME_WIDTH - 401 - 10, Candy.GAME_HEIGHT - 143 - 10, 'button-start', this.startGame, this, 1, 0, 2);
+
+        // Make sure the button works when clicked
+        startButton.inputEnabled = true;
+        startButton.events.onInputDown.add(this.startGame, this);
+    },
+
+    startGame: function() {
+        // Start the game state
+        this.state.start('Game');
     }
 };
 
