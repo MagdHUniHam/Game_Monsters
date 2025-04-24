@@ -56,24 +56,33 @@ Candy.Game.prototype = {
 	update: function(){
 		// update timer every frame
 		this._spawnCandyTimer += this.time.elapsed;
-		// if spawn timer reach one second (1000 miliseconds)
+	
+		// spawn new candy every second
 		if(this._spawnCandyTimer > 1000) {
-			// reset it
 			this._spawnCandyTimer = 0;
-			// and spawn new candy
 			Candy.item.spawnCandy(this);
 		}
-		// loop through all candy on the screen
+	
+		// rotate all candy
 		this._candyGroup.forEach(function(candy){
-			// to rotate them accordingly
 			candy.angle += candy.rotateMe;
 		});
-		// if the health of the player drops to 0, the player dies = game over
-		if(!Candy._health) {
-			// show the game over message
+	
+		// trigger game over only once
+		if(!Candy._health && !this._gameOverShown) {
+			this._gameOverShown = true;
+	
+			// show game over message
 			this.add.sprite((Candy.GAME_WIDTH-594)/2, (Candy.GAME_HEIGHT-271)/2, 'game-over');
-			// pause the game
+	
+			// pause gameplay
 			this.game.paused = true;
+	
+			// unpause and go to MainMenu after 4 seconds
+			setTimeout(() => {
+				this.game.paused = false;
+				this.state.start('MainMenu');
+			}, 4000);
 		}
 	}
 };
