@@ -11,6 +11,8 @@ Candy.Game = function(game){
 };
 Candy.Game.prototype = {
 	create: function(){
+		// Reset game over flag
+		this._gameOverShown = false; 
 		// start the physics engine
 		this.physics.startSystem(Phaser.Physics.ARCADE);
 		// set the global gravity
