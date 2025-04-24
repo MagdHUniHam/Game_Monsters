@@ -96,7 +96,7 @@ Candy.item = {
 		// define the offset for every candy
 		var dropOffset = [-27,-36,-36,-38,-48];
 		// randomize candy type
-		var candyType = Math.floor(Math.random()*4);
+		var candyType = Math.floor(Math.random()*3);
 		// create new candy
 		var candy = game.add.sprite(dropPos, dropOffset[candyType], 'candy');
 		// add new animation frame
