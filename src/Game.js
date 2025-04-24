@@ -37,6 +37,7 @@ Candy.Game.prototype = {
 		Candy._scoreText = this.add.text(120, 20, "0", this._fontStyle);
 		// set health of the player
 		Candy._health = 30;
+		Candy._score = 0;
 		// create new group for candy
 		this._candyGroup = this.add.group();
 		// spawn first candy
