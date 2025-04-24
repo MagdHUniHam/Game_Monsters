@@ -1,5 +1,5 @@
 Candy.Game = function(game){
-	// define needed variables for Candy.Game
+	// define needed variables for the Candy.Game
 	this._player = null;
 	this._candyGroup = null;
 	this._spawnCandyTimer = 0;
