@@ -7,7 +7,7 @@ Candy.Game = function(game){
 	// define Candy variables to reuse them in Candy.item functions
 	Candy._scoreText = null;
 	Candy._score = 0;
-	Candy._health = 10;
+	Candy._health = 30;
 };
 Candy.Game.prototype = {
 	create: function(){
@@ -36,7 +36,7 @@ Candy.Game.prototype = {
 		// initialize the score text with 0
 		Candy._scoreText = this.add.text(120, 20, "0", this._fontStyle);
 		// set health of the player
-		Candy._health = 10;
+		Candy._health = 30;
 		// create new group for candy
 		this._candyGroup = this.add.group();
 		// spawn first candy
