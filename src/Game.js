@@ -7,7 +7,7 @@ Candy.Game = function(game){
 	// define Candy variables to reuse them in Candy.item functions
 	Candy._scoreText = null;
 	Candy._score = 0;
-	Candy._health = 0;
+	Candy._health = 10;
 };
 Candy.Game.prototype = {
 	create: function(){
