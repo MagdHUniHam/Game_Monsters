@@ -95,7 +95,7 @@ Candy.item = {
 		// calculate drop position (from 0 to game width) on the x axis
 		var dropPos = Math.floor(Math.random()*Candy.GAME_WIDTH);
 		// define the offset for every candy
-		var dropOffset = [-20, -20, -2];
+		var dropOffset = [-100, -105, -110];
 		// randomize candy type
 		var candyType = Math.floor(Math.random()*3);
 		// create new candy
