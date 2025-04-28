@@ -11,6 +11,7 @@ Candy.Preloader.prototype = {
 		this.load.setPreloadSprite(this.preloadBar);
 		// load images
 		this.load.image('background', 'img/background.png');
+		this.load.image('password', 'img/password.png');
 		this.load.image('floor', 'img/floor.png');
 		this.load.image('monster-cover', 'img/monster-cover.png');
 		this.load.image('title', 'img/title.png');
