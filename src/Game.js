@@ -105,7 +105,7 @@ Candy.Game.prototype = {
 			// if the player won by reaching 30 points
 			if (Candy._score >= 30) {
 				// show password image
-				const passwordImage = this.add.sprite((Candy.GAME_WIDTH-400)/2, (Candy.GAME_HEIGHT-200)/2 + 150, 'password');
+				const passwordImage = this.add.sprite((Candy.GAME_WIDTH-400)/2, (Candy.GAME_HEIGHT-400)/2 + 100, 'password');
 				passwordImage.scale.setTo(0.5, 0.5);
 				this._passwordShown = true;
 
