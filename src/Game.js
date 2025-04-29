@@ -99,8 +99,7 @@ Candy.Game.prototype = {
 		if(!Candy._health && !this._gameOverShown) {
 			this._gameOverShown = true;
 
-			// show game over message
-			this.add.sprite((Candy.GAME_WIDTH-594)/2, (Candy.GAME_HEIGHT-271)/2, 'game-over');
+			
 
 			// if the player won by reaching 30 points
 			if (Candy._score >= 30) {
@@ -115,6 +114,8 @@ Candy.Game.prototype = {
 			else {
 				// normal lose: missed candies -> go back to main menu
 				this.game.paused = true;
+				// show game over message
+				this.add.sprite((Candy.GAME_WIDTH-594)/2, (Candy.GAME_HEIGHT-271)/2, 'game-over');
 				setTimeout(() => {
 					this.game.paused = false;
 					this.state.start('MainMenu');
